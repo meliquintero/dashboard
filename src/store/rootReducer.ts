@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
-// import Map from './Map/reducer';
-import ToDo from './ToDo/reducer';
+import dashboard from './product/dashboard';
 
 export default combineReducers({
-    ToDo,
+    dashboard,
 });

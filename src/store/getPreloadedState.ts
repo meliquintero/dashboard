@@ -1,10 +1,11 @@
-import { initialToDoState } from './ToDo/reducer';
-import { PartialRootState } from './configureStore';
+const stacklineData = require('./stackline_data.json');
 
-const getPreloadedState = (): PartialRootState => {
+const getPreloadedState = (): any => {
     return {
-        ToDo: {
-            ...initialToDoState,
+        dashboard: {
+            product: {
+                ...stacklineData[0],
+            },
         },
     };
 };
