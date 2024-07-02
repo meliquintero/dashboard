@@ -8,7 +8,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports =  (env, options)=> {
+module.exports = (env, options) => {
 
     const devMode = options.mode === 'development' ? true : false;
 
@@ -48,25 +48,25 @@ module.exports =  (env, options)=> {
                     use: [
                         devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
                         {
-                            loader: "css-loader", 
+                            loader: "css-loader",
                             options: {
                                 sourceMap: true
                             }
-                        }, 
+                        },
                         {
                             loader: 'postcss-loader'
                         }
                     ],
                 },
-                { 
-                    test: /\.(woff|woff2|ttf|eot)$/,  
+                {
+                    test: /\.(woff|woff2|ttf|eot)$/,
                     loader: "file-loader",
                     options: {
                         name: '[name].[contenthash].[ext]',
                     }
                 },
-                { 
-                    test: /\.(png|jpg|gif|svg)$/,  
+                {
+                    test: /\.(png|jpg|gif|svg)$/,
                     loader: "file-loader",
                     options: {
                         name: '[name].[contenthash].[ext]',
@@ -86,8 +86,8 @@ module.exports =  (env, options)=> {
             // copy static files from public folder to build directory
             new CopyPlugin({
                 patterns: [
-                    { 
-                        from: "public/**/*", 
+                    {
+                        from: "public/**/*",
                         globOptions: {
                             ignore: ["**/index.html"],
                         },
@@ -102,26 +102,26 @@ module.exports =  (env, options)=> {
                     title: package.name,
                     description: package.description,
                     author: package.author,
-                    keywords: Array.isArray(package.keywords) 
-                        ? package.keywords.join(',') 
+                    keywords: Array.isArray(package.keywords)
+                        ? package.keywords.join(',')
                         : undefined,
                     'og:title': package.name,
                     'og:description': package.description,
                     'og:url': package.homepage,
                 },
                 minify: {
-                    html5                          : true,
-                    collapseWhitespace             : true,
-                    minifyCSS                      : true,
-                    minifyJS                       : true,
-                    minifyURLs                     : false,
-                    removeComments                 : true,
-                    removeEmptyAttributes          : true,
-                    removeOptionalTags             : true,
-                    removeRedundantAttributes      : true,
-                    removeScriptTypeAttributes     : true,
-                    removeStyleLinkTypeAttributese : true,
-                    useShortDoctype                : true
+                    html5: true,
+                    collapseWhitespace: true,
+                    minifyCSS: true,
+                    minifyJS: true,
+                    minifyURLs: false,
+                    removeComments: true,
+                    removeEmptyAttributes: true,
+                    removeOptionalTags: true,
+                    removeRedundantAttributes: true,
+                    removeScriptTypeAttributes: true,
+                    removeStyleLinkTypeAttributese: true,
+                    useShortDoctype: true
                 }
             }),
             // !devMode ? new CleanWebpackPlugin() : false,
@@ -148,7 +148,7 @@ module.exports =  (env, options)=> {
                             drop_console: true,
                         }
                     }
-                }), 
+                }),
                 new CssMinimizerPlugin()
             ]
         },

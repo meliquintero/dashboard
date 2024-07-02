@@ -1,8 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 
 export const SalesTable = () => {
-    const sales = useSelector((state) => state.dashboard.product.sales);
+    const sales = useAppSelector((state) => state.dashboard.product.sales);
 
     return (
         <div className="grid-rows-subgrid bg-white col-start-2 col-end-6 ...">

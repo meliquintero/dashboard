@@ -1,9 +1,9 @@
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer, XAxis, Tooltip } from 'recharts';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks';
 
 export const SalesGraph = () => {
-    const sales = useSelector((state) => state.dashboard.product.sales);
+    const sales = useAppSelector((state) => state.dashboard.product.sales);
 
     const data = sales.map((s) => {
         const date = new Date(s.weekEnding);
