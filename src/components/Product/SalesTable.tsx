@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../../hooks';
+import { SaleType } from '@typing/sale';
 
 export const SalesTable = () => {
     const sales = useAppSelector((state) => state.dashboard.product.sales);
@@ -27,7 +28,7 @@ export const SalesTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sales.map((sale) => {
+                    {sales.map((sale: SaleType) => {
                         return (
                             <tr>
                                 <td

@@ -1,19 +1,20 @@
 import React from 'react';
 import { LineChart, Line, ResponsiveContainer, XAxis, Tooltip } from 'recharts';
 import { useAppSelector } from '../../hooks';
+import { SaleType } from '@typing/sale';
 
 export const SalesGraph = () => {
     const sales = useAppSelector((state) => state.dashboard.product.sales);
 
-    const data = sales.map((s) => {
-        const date = new Date(s.weekEnding);
+    const data = sales.map((sale: SaleType) => {
+        const date = new Date(sale.weekEnding);
         const month = new Intl.DateTimeFormat('en-US', {
             month: 'short',
         }).format(date);
         return {
-            name: s.weekEnding,
-            uv: s.retailSales,
-            pv: s.wholesaleSales,
+            name: sale.weekEnding,
+            uv: sale.retailSales,
+            pv: sale.wholesaleSales,
             month,
         };
     });
